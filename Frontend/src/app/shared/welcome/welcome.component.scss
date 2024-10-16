@@ -1,0 +1,11 @@
+
+.custom-ng-select ::ng-deep .ng-select  {
+    background-color: black;
+}
+
+
+::ng-deep .custom-ng-select > div > div > ng-select .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+    background-color: green;
+    color: yellow;
+}
+

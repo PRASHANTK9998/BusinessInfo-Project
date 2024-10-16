@@ -1,0 +1,29 @@
+<div class="welcome container-fluid">
+  <div class="row">
+    <div
+      class="d-flex col-lg-12 color-black background-color-transparent flex-direction-column flex-wrap-wrap text-align-center align-items-center justify-content-center margin-left-0 margin-right-0 margin-top-0 margin-bottom-0 padding-left-8 padding-right-8 padding-top-0 padding-bottom-0"
+    >
+      <dropdown
+        class="custom-ng-select"
+        [configProperties]="dropdownConfigPropertiesf531530eff89"
+        [formValidation]="dropdownFormValidationf531530eff89"
+        (configPropertiesChanged)="dropdownChangedf531530eff89($event)"
+      ></dropdown>
+    </div>
+  </div>
+  <div class="row">
+    <div
+      class="d-flex col-lg-12 color-black background-color-transparent flex-direction-column flex-wrap-wrap text-align-center align-items-center justify-content-center margin-left-0 margin-right-0 margin-top-0 margin-bottom-0 padding-left-8 padding-right-8 padding-top-0 padding-bottom-0"
+    >
+      <data-grid
+        [configData]="dataGridConfigPropertiescb46826a850a"
+        [gridIterfaceConfig]="dataGridInterfaceConfigcb46826a850a"
+        [rowData]="dataGridConfigPropertiescb46826a850a.rowData"
+        (rowChanged)="gridRowChangedcb46826a850a($event)"
+        (deleteRow)="onDeleteRowcb46826a850a($event)"
+        (saveBulkData)="saveBulkDatacb46826a850a($event)"
+      >
+      </data-grid>
+    </div>
+  </div>
+</div>

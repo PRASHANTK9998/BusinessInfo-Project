@@ -1,0 +1,21 @@
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+  
+  .page-item.disabled .btn-getstarted {
+    cursor: not-allowed;
+    background-color: grey;
+  }
+
+  .btn-getstarted:hover{
+    opacity: 0.8;
+  }
+
+  .page-info {
+    font-size: 18px;
+    color: #333;
+    padding: 8px 15px;
+  }
+  

@@ -1,0 +1,391 @@
+<div class="modal-dialog-centered modal-lg" role="document">
+  <div class="modal-content modal-lg">
+    <div class="modal-header">
+      <h4 class="modal-title">Edit Business Data</h4>
+      <button
+        type="button"
+        class="btn-close me-2"
+        aria-label="Close"
+        (click)="activeModal.dismiss('Cross click')"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="editForm">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="businessName"
+                >Business Name<span class="required-asterisk">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="businessName"
+                placeholder="Enter Business Name"
+                formControlName="businessName"
+                
+              />
+              <h5
+                class="red-text"
+                [hidden]="
+                  editForm.get('businessName')?.valid ||
+                  editForm.get('businessName')?.untouched
+                "
+              >
+                Business Name is required
+              </h5>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="businessCategory"
+                >Business Category<span class="required-asterisk"
+                  >*</span
+                ></label
+              >
+              <!-- <select
+                class="form-control"
+                id="businessCategory"
+                formControlName="businessCategory"
+              >
+                <option value="selectOne" disabled selected>
+                  Select One...
+                </option>
+                <option value="Electronics">Electronics</option>
+                <option value="Grocery">Grocery</option>
+                <option value="Retail">Retail</option>
+                <option value="Pharma">Pharma</option>
+                <option value="Other">Other</option>
+              </select> -->
+              <select
+                  class="form-control"
+                  id="businessCategory"
+                  formControlName="businessCategory"
+                  (change)="onCategoryChange($event)"
+                >
+                <option [ngValue]="null" disabled>Select a category</option> 
+                  <option
+                    *ngFor="let category of categories"
+                    [ngValue]="category.categoryId"
+                   
+                  >
+                    {{ category.categoryName }}
+                  </option>
+                </select>
+              <!-- <h5
+                class="red-text"
+                [hidden]="
+                  editForm.get('businessCategory')?.valid ||
+                  editForm.get('businessCategory')?.untouched
+                "
+              >
+                Select business category
+              </h5> -->
+            </div>
+          </div> 
+        </div>
+
+        <div class="mb-3">
+          <label for="GSTIN"
+            >GSTIN Number<span class="required-asterisk">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="GSTIN"
+            placeholder="Enter registered GSTIN Number *"
+            formControlName="GSTIN"
+          />
+          <h5
+            class="red-text"
+            [hidden]="
+              editForm.get('GSTIN')?.valid || editForm.get('GSTIN')?.untouched
+            "
+          >
+            GSTIN Number is required
+          </h5>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="email"
+                >Email Address<span class="required-asterisk">*</span></label
+              >
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Enter your Email Address"
+                formControlName="email"
+              />
+              <h5
+                class="red-text"
+                [hidden]="
+                  editForm.get('email')?.valid ||
+                  editForm.get('email')?.untouched
+                "
+              >
+                Email address is required
+              </h5>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="mobileNumber"
+                >Mobile Number<span class="required-asterisk">*</span></label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="mobileNumber"
+                placeholder="Enter 10 Digit Mobile Number"
+                formControlName="mobileNumber"
+              />
+              <h5
+                class="red-text"
+                [hidden]="
+                  editForm.get('mobileNumber')?.valid ||
+                  editForm.get('mobileNumber')?.untouched
+                "
+              >
+                10 digit mobile number is required
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="businessWebsite">Business website</label>
+          <input
+            type="text"
+            class="form-control"
+            id="businessName"
+            placeholder="Enter Business Website"
+            formControlName="businessWebsite"
+          />
+        </div>
+        <div formGroupName="addressDTO">
+        <div>
+          <label for="addressLine1"
+            >Business Address<span class="required-asterisk">*</span></label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="addressLine1"
+            placeholder="Enter street address line 1 *"
+            formControlName="addressLine1"
+          />
+          <h5
+            class="red-text"
+            [hidden]="
+              editForm.get('addressDTO.addressLine1')?.valid ||
+              editForm.get('addressDTO.addressLine1')?.untouched
+            "
+          >
+            Street line 1 is required
+          </h5>
+        </div>
+
+        <div class="mb-3">
+          <label for="addressLine2"></label>
+          <input
+            type="text"
+            class="form-control"
+            id="addressLine2"
+            placeholder="Enter street address line 2 (Optional)"
+            formControlName="addressLine2"
+          />
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="state"
+                >State<span class="required-asterisk">*</span></label
+              >
+              <select class="form-control" id="state" formControlName="state">
+                <option value="" disabled selected>Select State</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="MadhyaPradesh">Madhya Pradesh</option>
+                <option value="UttarPradesh">Uttar Pradesh</option>
+                <option value="Chattisgarh">Chattisgarh</option>
+                <option value="Tamilnadu">Tamilnadu</option>
+              </select>
+              <h5
+                class="red-text"
+                [hidden]="
+                  editForm.get('addressDTO.state')?.valid ||
+                  editForm.get('addressDTO.state')?.untouched
+                "
+              >
+                State must be selected
+              </h5>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="city"
+                >City<span class="required-asterisk">*</span></label
+              >
+              <select class="form-control" id="city" formControlName="city">
+                <option value="" disabled selected>Select City</option>
+                <option *ngFor="let city of cities" [value]="city">
+                  {{ city }}
+                </option>
+              </select>
+              <h5
+                class="red-text"
+                [hidden]="
+                  editForm.get('addressDTO.city')?.valid || editForm.get('addressDTO.city')?.untouched
+                "
+              >
+                city must be selected
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="zipCode"
+                >Zip Code<span class="required-asterisk">*</span></label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="zipCode"
+                placeholder="Enter Zipcode/Pincode"
+                formControlName="zipCode"
+              />
+              <h5
+                class="red-text"
+                [hidden]="
+                  editForm.get('addressDTO.zipCode')?.valid || editForm.get('addressDTO.zipCode')?.untouched
+                "
+              >
+                6 digit Zip or Pincode is required
+              </h5>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="country"
+                >Country<span class="required-asterisk">*</span></label
+              >
+              <select class="form-control" id="country" formControlName="country">
+                <option value="" disabled selected>Country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="US">US</option>
+                <option value="South Africa">South Africa</option>
+                <option value="Norway">Norway</option>
+              </select>
+              <h5
+                class="red-text"
+                [hidden]="
+                  editForm.get('addressDTO.country')?.valid ||
+                  editForm.get('addressDTO.country')?.untouched
+                "
+              >
+                Country must be selected
+              </h5>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="contactPersonName"
+                >Contact Person Name<span class="required-asterisk"
+                  >*</span
+                ></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="contactPersonName"
+                placeholder="Enter Contact Person Name"
+                formControlName="contactPersonName"
+              />
+              <h5
+                class="red-text"
+                [hidden]="
+                  editForm.get('contactPersonName')?.valid ||
+                  editForm.get('contactPersonName')?.untouched
+                "
+              >
+                contact person name is required
+              </h5>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="contactPersonPosition"
+                >Position/title<span class="required-asterisk">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="contactPersonPosition"
+                placeholder="Enter position/title of contact person"
+                formControlName="contactPersonPosition"
+              />
+              <h5
+                class="red-text"
+                [hidden]="
+                  editForm.get('contactPersonPosition')?.valid ||
+                  editForm.get('contactPersonPosition')?.untouched
+                "
+              >
+                position of contact person is required
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="businessDetails"
+            >More Details About Business<span class="required-asterisk"
+              >*</span
+            ></label
+          >
+          <textarea
+            class="form-control"
+            id="businessDetails"
+            rows="5"
+            placeholder="Describe your business in few words"
+            formControlName="businessDetails"
+          ></textarea>
+          <h5
+            class="red-text"
+            [hidden]="
+              editForm.get('businessDetails')?.valid ||
+              editForm.get('businessDetails')?.untouched
+            "
+          >
+            business details is required
+          </h5>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="activeModal.dismiss('Cancel click')"
+      >
+        Close
+      </button>
+      <button type="button" class="btn-getstarted" (click)="saveChanges()">
+        Save changes
+      </button>
+    </div>
+  </div>
+</div>

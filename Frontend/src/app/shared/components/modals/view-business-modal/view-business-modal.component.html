@@ -1,0 +1,263 @@
+<!-- <div class="modal fade show" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Business Data Details</h5>
+          <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <strong>Business Name:</strong> {{ businessData.businessName }}
+              </div>
+              <div class="col-md-6">
+                <strong>Category:</strong> {{ businessData.businessCategoryName }}
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <strong>GSTIN:</strong> {{ businessData.gstNo }}
+              </div>
+              <div class="col-md-6">
+                <strong>Email:</strong> {{ businessData.email }}
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <strong>Mobile Number:</strong> {{ businessData.mobileNumber }}
+              </div>
+              <div class="col-md-6">
+                <strong>Website:</strong> {{ businessData.website }}
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <strong>Address Line 1:</strong> {{ businessData.addressDTO.addressLine1 }}
+              </div>
+              <div class="col-md-6">
+                <strong>Address Line 2:</strong> {{ businessData.addressDTO.addressLine2 }}
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <strong>State:</strong> {{ businessData.addressDTO.state }}
+              </div>
+              <div class="col-md-6">
+                <strong>City:</strong> {{ businessData.addressDTO.city }}
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <strong>ZIP Code:</strong> {{ businessData.addressDTO.zipCode }}
+              </div>
+              <div class="col-md-6">
+                <strong>Country:</strong> {{ businessData.addressDTO.country }}
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <strong>Contact Person:</strong> {{ businessData.contactPersonName }}
+              </div>
+              <div class="col-md-6">
+                <strong>Position:</strong> {{ businessData.contactPersonPosition }}
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-md-12">
+                <strong>Business Details:</strong> {{ businessData.businessDetails }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   -->
+
+<div class="modal fade show" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Business Data Details</h5>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="closeModal()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <!-- Business Details -->
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <strong>Business Name:</strong> {{ businessData.businessName }}
+            </div>
+            <div class="col-md-6">
+              <strong>Rating:</strong> 
+              @if(businessData.reviews && businessData.reviews.length >= 2){
+                {{calculateAverageOftheRating(businessData.reviews)}}
+                  <div class="rating-container">
+                    <div class="stars">
+                      <ng-container *ngFor="let star of fullStars">
+                        <i class="bi bi-star-fill filled"></i>
+                      </ng-container>
+                      <ng-container *ngIf="hasHalfStar">
+                        <i class="bi bi-star-half filled"></i>
+                      </ng-container>
+                      <ng-container *ngFor="let star of emptyStars">
+                        <i class="bi bi-star blank"></i>
+                      </ng-container>
+                    </div>
+                  </div>
+               
+              }
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+             @if(role === 'Admin'){
+              <strong>GSTIN:</strong> {{ businessData.gstNo }}
+             }@else{
+              <strong>Categories:</strong> {{ businessData.businessCategoryName }}
+             }
+            </div>
+            <div class="col-md-6">
+              <strong>Email:</strong> {{ businessData.email }}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <strong>Mobile Number:</strong> {{ businessData.mobileNumber }}
+            </div>
+            <div class="col-md-6">
+              <strong>Website:</strong> <a [href]="formatUrl(businessData.website)" (click)="increaseCount(businessData.email)" target="_blank">
+                {{ businessData.website }}
+              </a>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <strong>Address Line 1:</strong>
+              {{ businessData.addressDTO.addressLine1 }}
+            </div>
+            <div class="col-md-6">
+              <strong>Address Line 2:</strong>
+              {{ businessData.addressDTO.addressLine2 }}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <strong>State:</strong> {{ businessData.addressDTO.state }}
+            </div>
+            <div class="col-md-6">
+              <strong>City:</strong> {{ businessData.addressDTO.city }}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <strong>ZIP Code:</strong> {{ businessData.addressDTO.zipCode }}
+            </div>
+            <div class="col-md-6">
+              <strong>Country:</strong> {{ businessData.addressDTO.country }}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <strong>Contact Person:</strong>
+              {{ businessData.contactPersonName }}
+            </div>
+            <div class="col-md-6">
+              <strong>Position:</strong>
+              {{ businessData.contactPersonPosition }}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <strong>Business Details:</strong>
+              {{ businessData.businessDetails }}
+            </div>
+          </div>
+
+          <!-- Review Section -->
+          <hr />
+          <h5 class="mt-4">Post Review</h5>
+          <div class="mb-3">
+            <!-- Star Rating -->
+            <div class="rating">
+              <i
+                class="bi"
+                [ngClass]="{
+                  'bi-star-fill': rating >= 1,
+                  'bi-star': rating < 1
+                }"
+                (click)="setRating(1)"
+              ></i>
+              <i
+                class="bi"
+                [ngClass]="{
+                  'bi-star-fill': rating >= 2,
+                  'bi-star': rating < 2
+                }"
+                (click)="setRating(2)"
+              ></i>
+              <i
+                class="bi"
+                [ngClass]="{
+                  'bi-star-fill': rating >= 3,
+                  'bi-star': rating < 3
+                }"
+                (click)="setRating(3)"
+              ></i>
+              <i
+                class="bi"
+                [ngClass]="{
+                  'bi-star-fill': rating >= 4,
+                  'bi-star': rating < 4
+                }"
+                (click)="setRating(4)"
+              ></i>
+              <i
+                class="bi"
+                [ngClass]="{
+                  'bi-star-fill': rating >= 5,
+                  'bi-star': rating < 5
+                }"
+                (click)="setRating(5)"
+              ></i>
+            </div>
+            <div *ngIf="errorMessage" class="text-danger mt-1">
+              {{ errorMessage }}
+            </div>
+          </div>
+          <!-- Comment Box -->
+          <div class="mb-3">
+            <textarea
+              class="form-control"
+              [(ngModel)]="reviewComment"
+              rows="3"
+              placeholder="Write your review..."
+            ></textarea>
+          </div>
+          <!-- Submit Button -->
+          <button
+            type="button"
+            class="btn-getstarted"
+            (click)="submitReview()"
+          >
+            {{ loggedUserEmail ? "Submit Review" : "Login" }}
+          </button>
+        </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+          Close
+        </button>
+      </div> -->
+    </div>
+  </div>
+</div>

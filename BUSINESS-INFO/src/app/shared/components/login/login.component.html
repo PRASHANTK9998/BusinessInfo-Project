@@ -1,0 +1,92 @@
+<form class="container row" [formGroup]="loginForm">
+  <h4>Login To BusinessInfo</h4>
+  <hr>
+  <div class="col-12 form-group">
+    <label for="email">Email Address<span class="required-asterisk">*</span></label>
+    <input
+      type="email"
+      id="email"
+      class="form-control"
+      placeholder="Enter registered email here"
+      formControlName="email"
+    />
+    <h5 class="red-text" [hidden]="loginForm.get('email')?.valid || loginForm.get('email')?.untouched">
+      Enter a Valid Email address
+    </h5>
+  </div>
+
+  <div class="col-12 form-group">
+    <label for="password">Password<span class="required-asterisk">*</span></label>
+    <input
+      [type]="passwordFieldType"
+      class="form-control"
+      id="password"
+      placeholder="Enter Password here"
+      formControlName="password"
+    />
+    <button
+      type="button"
+      class="toggle-btn position-absolute end-0 top-50 translate-middle-y"
+      (click)="togglePasswordVisibility()"
+    >
+      <i
+        [class]="
+          passwordFieldType === 'password' ? 'bi bi-eye-slash' : 'bi bi-eye'
+        "
+      ></i>
+    </button>
+    <h5 class="red-text" [hidden]="loginForm.get('password')?.valid || loginForm.get('password')?.untouched">
+      Password is required
+    </h5>
+  </div>
+
+  <div class="col-6 form-group">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Captcha"
+      disabled
+      readonly
+    />
+  </div>
+
+  <div class="col-6 form-group">
+    <div class="inner-div">{{ updatedcaptcha }}</div>
+  </div>
+
+  <div class="col-12 form-group">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter Above Captcha *"
+      formControlName="captcha"
+    />
+    <h5 class="red-text" [hidden]="loginForm.get('captcha')?.valid || loginForm.get('captcha')?.untouched">
+      Captcha is required
+    </h5>
+  </div>
+  <div class="col-12 d-flex align-items-center justify-content-between">
+    <div class="d-flex">
+      <input
+        type="checkbox"
+        class="form-check-input me-2"
+        id="rememberMe"
+      />
+      <label class="form-check-label" for="rememberMe">
+        Remember Me
+      </label>
+    </div>
+    <a class="forgot-password-link">Forgot Password?</a>
+  </div>
+
+  <div class="col-12 d-flex justify-content-center">
+    <button class="login-btn" [disabled]="loginForm.invalid" (click)="login()">
+      Login
+    </button>
+    <button class="btn-red ms-5" (click)="reset()">Reset</button>
+  </div>
+  <div class="col-12 mt-3 d-flex justify-content-center">
+    Don't have an account?<a routerLink = "/signup" class="signup-link"> Sign Up</a>
+  </div>
+</form>
+

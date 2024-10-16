@@ -1,0 +1,118 @@
+<div class="container-fluid mt-3">
+  <div class="row align-items-center mb-2">
+    <div class="row align-items-center">
+      <!-- Search input box -->
+      <div class="col-4">
+        <div class="search-box">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search by Business Name, Category or City"
+            [(ngModel)]="searchTerm"
+            (input)="searchByBusinessNameAndCategory()"
+          />
+        </div>
+      </div>
+
+      <!-- Sort dropdown (optional) -->
+      <div class="col-3">
+        <div class="sort-dropdown">
+          <!-- You can uncomment this if needed -->
+          <!-- 
+            <ng-select class="sort-class" 
+                       [placeholder]="'Sort by'" 
+                       [(ngModel)]="selectedSort" 
+                       (change)="onSortChange()" 
+                       [clearable]="false">
+              <ng-option class="options" *ngFor="let sort of sorts" [value]="sort.value">
+                {{sort.sortBy}}
+              </ng-option>
+            </ng-select> 
+            -->
+        </div>
+      </div>
+
+      <!-- Download button aligned to the right -->
+      <div class="col-auto ms-auto">
+        <button class="download btn-getstarted" (click)="downloadExcel()">
+          Download Excel
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="table-container table-responsive border mb-3">
+          <table class="table table-bordered table-striped">
+            <caption class="table-caption">
+              List Of Highly Rated Businesses
+            </caption>
+            <thead>
+              <tr>
+                <th>Business Name</th>
+                <th>Category</th>
+                <th>GSTIN Number</th>
+                <th>Email Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
+                <!-- <th>Website</th> -->
+                <th>Profile Score</th>
+                <th>Rating</th>
+                <th>Reviews</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of paginatedItems">
+                <td>{{ data.businessName }}</td>
+                <td>{{ data.businessCategoryName }}</td>
+                <td>{{ data.gstNo }}</td>
+                <td>{{ data.email }}</td>
+                <td>{{ data.addressDTO.city }}</td>
+                <td>{{ data.addressDTO.state }}</td>
+                <td>{{ data.addressDTO.zipCode }}</td>
+                <!-- <td>
+                  <a [href]="formatUrl(data.website)" target="_blank">
+                    {{ data.website }}
+                  </a>
+                </td> -->
+                <td>{{ data.profileScore }} % Completed</td>
+                <td>{{calculateAverageOftheRating(data.reviews)}}
+                    <div class="rating-container">
+                      <div class="stars">
+                        <ng-container *ngFor="let star of fullStars">
+                          <i class="bi bi-star-fill filled"></i>
+                        </ng-container>
+                        <ng-container *ngIf="hasHalfStar">
+                          <i class="bi bi-star-half filled"></i>
+                        </ng-container>
+                        <ng-container *ngFor="let star of emptyStars">
+                          <i class="bi bi-star blank"></i>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </td>
+                <td>{{data.reviews?.length}} Reviews</td>
+                <td>{{convertNumberToApplicationStatus(data.businessStatus)}}</td>
+              </tr>
+              <tr *ngIf="paginatedItems.length === 0">
+                <td colspan="9" class="text-center">
+                  <h2 class="no-data-found">No data Found</h2>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <app-pagination
+    [totalItems]="filteredbusinessData.length"
+    [itemsPerPage]="itemsPerPage"
+    [currentPage]="currentPage"
+    (pageChanged)="onPageChange($event)"
+  >
+  </app-pagination>
+</div>

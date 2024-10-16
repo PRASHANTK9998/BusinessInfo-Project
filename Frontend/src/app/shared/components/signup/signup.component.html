@@ -1,0 +1,130 @@
+<form class="container mt-5" [formGroup]="registerForm">
+  <h4>Sign Up For BusinessInfo</h4>
+  <hr />
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="firstName">First Name<span class="required-asterisk">*</span></label>
+        <input
+          type="text"
+          id="FirstName"
+          placeholder="Enter First Name Here"
+          formControlName="firstName"
+          class="form-control"
+        />
+        <h5 class="red-text" *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
+          First name is required
+        </h5>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="lastName">Last Name<span class="required-asterisk">*</span></label>
+        <input
+          type="text"
+          id="lastName"
+          placeholder="Enter Last Name Here"
+          formControlName="lastName"
+          class="form-control"
+        />
+        <h5 class="red-text" *ngIf="registerForm.get('lastName')?.invalid && registerForm.get('lastName')?.touched">
+          Last name is required
+        </h5>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="email">Email Address<span class="required-asterisk">*</span></label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter Your Email Address Here"
+          formControlName="email"
+          class="form-control"
+        />
+        <h5 class="red-text" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+          Enter a valid Email address
+        </h5>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="mobileNumber">Mobile Number<span class="required-asterisk">*</span></label>
+        <input
+          type="text"
+          id="mobileNumber"
+          placeholder="Enter Mobile Number"
+          formControlName="mobileNumber"
+          class="form-control"
+        />
+        <h5 class="red-text" *ngIf="registerForm.get('mobileNumber')?.invalid && registerForm.get('mobileNumber')?.touched">
+          Mobile number must be 10 digits
+        </h5>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="newPassword">New Password<span class="required-asterisk">*</span></label>
+        <input
+          type="password"
+          id="newPassword"
+          placeholder="Enter New Password here"
+          formControlName="newPassword"
+          class="form-control"
+        />
+        <h5 class="red-text" *ngIf="registerForm.get('newPassword')?.invalid && registerForm.get('newPassword')?.touched">
+          Password must be greater than 6 characters.
+        </h5>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="cnfPassword">Confirm New Password<span class="required-asterisk">*</span></label>
+        <input
+          type="password"
+          id="cnfPassword"
+          placeholder="Enter Confirm Password here"
+          formControlName="cnfPassword"
+          class="form-control"
+        />
+        <h5 class="red-text" *ngIf="registerForm.errors?.['mismatch'] && registerForm.get('cnfPassword')?.touched">
+          Passwords do not match.
+        </h5>
+      </div>
+    </div>
+
+    <div class="col-md-12 mt-2">
+      <div class="form-group form-check d-flex align-items-center">
+        <input
+          type="checkbox"
+          id="businessRegistration"
+          formControlName="businessRegistration"
+          class="form-check-input custom-checkbox"
+        />
+        <label for="businessRegistration" class="form-check-label ms-2 mb-0">
+          Are you registered for Business?
+        </label>
+      </div>
+    </div>
+
+    <div class="col-md-12 d-flex justify-content-center mt-3">
+      <button
+        class="login-btn"
+        [disabled]="registerForm.invalid"
+        (click)="register()"
+      >
+        Sign Up
+      </button>
+      <button class="btn-red ms-5" (click)="reset()">Reset</button>
+    </div>
+
+    <div class="col-md-12 mt-3 d-flex justify-content-center">
+      Already Have an Account?<a routerLink="/login">Login</a>
+    </div>
+  </div>
+</form>

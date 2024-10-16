@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="card p-4 shadow-sm">
+    <h3 class="card-title mb-4">Make Payment</h3>
+    <form [formGroup]="paymentForm">
+      <!-- Email Field (Read-only) -->
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          readonly
+        />
+      </div>
+
+     
+
+      <!-- Amount Field (Dropdown) -->
+      <div class="form-group mb-3">
+        <label for="amount">Amount</label>
+        <select id="amount" formControlName="amount" class="form-control">
+          <option value="" selected>Select Amount</option>
+          <option value="7000">7000 (Silver)</option>
+          <option value="9000">9000 (Gold)</option>
+        </select>
+      </div>
+
+      <!-- Payment Date Field (Read-only) -->
+      <div class="form-group mb-3">
+        <label for="paymentDate">Payment Date</label>
+        <input
+          type="date"
+          id="paymentDate"
+          formControlName="paymentDate"
+          class="form-control"
+          readonly
+        />
+      </div>
+
+      <!-- Payment Method Field (Dropdown) -->
+      <div class="form-group mb-3">
+        <label for="paymentMethod">Payment Method</label>
+        <select
+          id="paymentMethod"
+          formControlName="paymentMethod"
+          class="form-control"
+          (change)="onPaymentMethodChange($event)"
+        >
+          <option value="" selected>Select Method</option>
+          <option value="UPI">UPI</option>
+          <option value="Debit/Credit Card" disabled>
+            Debit/Credit Card (Currently Unavailable)
+          </option>
+        </select>
+      </div>
+
+      <!-- Payment Detail Field -->
+      <div class="form-group mb-3">
+        <label for="paymentDetail">Payment Detail</label>
+        <input
+          type="text"
+          id="paymentDetail"
+          formControlName="paymentDetail"
+          class="form-control"
+          [placeholder]="paymentDetailPlaceholder"
+        />
+      </div>
+
+      <div class="d-flex justify-content-center mt-3">
+        <button
+          class="btn-getstarted"
+          [disabled]="!paymentForm.valid"
+          (click)="onSubmit()"
+        >
+          Pay Now
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

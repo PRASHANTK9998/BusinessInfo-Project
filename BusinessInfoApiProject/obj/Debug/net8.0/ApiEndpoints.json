@@ -1,0 +1,640 @@
+[
+  {
+    "ContainingType": "PassportApplicationWebApi.Controllers.AuthenticationController",
+    "Method": "CheckUserNameExists",
+    "RelativePath": "api/Authentication/checkUserNameExists",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PassportApplicationWebApi.Controllers.AuthenticationController",
+    "Method": "Login",
+    "RelativePath": "api/Authentication/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "BusinessInfoApiProject.DTOs.AuthDTO.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PassportApplicationWebApi.Controllers.AuthenticationController",
+    "Method": "Register",
+    "RelativePath": "api/Authentication/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registerDto",
+        "Type": "BusinessInfoApiProject.DTOs.AuthDTO.RegisterDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "GetAll",
+    "RelativePath": "api/Business",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "DeleteBusiness",
+    "RelativePath": "api/Business/{email}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "Add",
+    "RelativePath": "api/Business/{email}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "businessDto",
+        "Type": "BusinessInfoApiProject.DTOs.BusinessDTO.CreateBusinessDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "GetBusinessByEmail",
+    "RelativePath": "api/Business/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "Update",
+    "RelativePath": "api/Business/{email}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "businessDto",
+        "Type": "BusinessInfoApiProject.DTOs.BusinessDTO.UpdateBusinessDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "GetAllActiveBusinesses",
+    "RelativePath": "api/Business/activebusinesses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "GetSponsoredBusinessesOrMostVisitedOrMostRated",
+    "RelativePath": "api/Business/businessesbyresponsetype/{responseType}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "responseType",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "GetBusinessesByCityAndCategory",
+    "RelativePath": "api/Business/businessesPerCityPerCategory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "city",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "categoryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "GetInactiveBusinessDetailReport",
+    "RelativePath": "api/Business/GetInactiveBusinessDetailReport",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BusinessInfoApiProject.DTOs.BusinessDTO.LastSixMonthInactiveBusinessesReportDto, BusinessInfoApiProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "GetBusinessesBySponsorStatus",
+    "RelativePath": "api/Business/GetInactiveBusinessesBySponsershipStatus",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "isSponsored",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BusinessInfoApiProject.DTOs.BusinessDTO.LastSixMonthInactiveBusinessesReportDto, BusinessInfoApiProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "GetHighlyRatedBusinesses",
+    "RelativePath": "api/Business/highlyrated",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BusinessInfoApiProject.Models.Business, BusinessInfoApiProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "IncreaseCount",
+    "RelativePath": "api/Business/increasecount/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "GetBusinessesWithLowProfileScoreInLastThreeMonths",
+    "RelativePath": "api/Business/lowProfileScore",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "MarkOrUnmarkAsMostRated",
+    "RelativePath": "api/Business/markorunmarkasmostrated/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "MarkOrUnmarkAsMostVisited",
+    "RelativePath": "api/Business/markorunmarkasmostvisited/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "GetAllNewBusinesses",
+    "RelativePath": "api/Business/newbusinesses",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessController",
+    "Method": "UpdateBusinessStatus",
+    "RelativePath": "api/Business/updateStatus/{email}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "updatedBusinessStatus",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "message",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessCategoryController",
+    "Method": "GetAll",
+    "RelativePath": "api/BusinessCategory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessCategoryController",
+    "Method": "Add",
+    "RelativePath": "api/BusinessCategory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "businessCategory",
+        "Type": "BusinessInfoApiProject.DTOs.BusinessCategoryDTO.CreateBusinessCategoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessCategoryController",
+    "Method": "Update",
+    "RelativePath": "api/BusinessCategory/{categoryId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "businessCategory",
+        "Type": "BusinessInfoApiProject.DTOs.BusinessCategoryDTO.CreateBusinessCategoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.BusinessCategoryController",
+    "Method": "Delete",
+    "RelativePath": "api/BusinessCategory/{categoryId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoryId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.ContactUsController",
+    "Method": "Add",
+    "RelativePath": "api/ContactUs",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contactUsDto",
+        "Type": "BusinessInfoApiProject.DTOs.ContactUsDTO.CreateContactUsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.ContactUsController",
+    "Method": "GetAll",
+    "RelativePath": "api/ContactUs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.ContactUsController",
+    "Method": "Delete",
+    "RelativePath": "api/ContactUs",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PassportApplication1.Controllers.PaymentDetailsController",
+    "Method": "CreatePaymentDetails",
+    "RelativePath": "api/PaymentDetails",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createPaymentDetailsDto",
+        "Type": "PassportApplicationWebApi.DTOs.PaymentDetails.CreatePaymentDetailsDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PassportApplication1.Controllers.PaymentDetailsController",
+    "Method": "GetPaymentDetails",
+    "RelativePath": "api/PaymentDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PassportApplication1.Controllers.PaymentDetailsController",
+    "Method": "GetPaymentDetails",
+    "RelativePath": "api/PaymentDetails/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PassportApplication1.Controllers.PaymentDetailsController",
+    "Method": "GetPaymentDetailsWithBusinessInfo",
+    "RelativePath": "api/PaymentDetails/GetPaymentDetailsOfLastMonth",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BusinessInfoApiProject.DTOs.ContactUsDTO.PaymentDetailsOfLastMonthDtos, BusinessInfoApiProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.ProductController",
+    "Method": "GetAll",
+    "RelativePath": "api/Product",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.ProductController",
+    "Method": "Add",
+    "RelativePath": "api/Product",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "product",
+        "Type": "BusinessInfoApiProject.DTOs.ProductDTO.CreateProductDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.ProductController",
+    "Method": "GetById",
+    "RelativePath": "api/Product/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.ProductController",
+    "Method": "Update",
+    "RelativePath": "api/Product/{productId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "product",
+        "Type": "BusinessInfoApiProject.DTOs.ProductDTO.CreateProductDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.ProductController",
+    "Method": "Delete",
+    "RelativePath": "api/Product/{productId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.ReviewController",
+    "Method": "Add",
+    "RelativePath": "api/Review",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reviewDto",
+        "Type": "BusinessInfoApiProject.DTOs.ReviewDTO.CreateReviewDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.ReviewController",
+    "Method": "AddMultiple",
+    "RelativePath": "api/Review/add-multiple-reviews",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "reviewDtos",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BusinessInfoApiProject.DTOs.ReviewDTO.CreateReviewDto, BusinessInfoApiProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "BusinessInfoApiProject.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BusinessInfoApiProject.WeatherForecast, BusinessInfoApiProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]

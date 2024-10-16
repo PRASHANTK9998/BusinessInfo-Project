@@ -1,0 +1,142 @@
+.container {
+  max-width: 600px;
+  background-color: #ffffff;
+  margin: 0px auto;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+.required-asterisk {
+  margin-left: 3px;
+  color: red;
+}
+
+h4 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.custom-checkbox {
+  width: 1.25em; /* Adjust the width of the checkbox */
+  height: 1.25em; /* Adjust the height of the checkbox */
+  min-width: 1.25em; /* Ensures the checkbox doesn't shrink */
+  margin: 0; /* Removes any default margin */
+}
+
+.form-check-label {
+  font-size: 1rem; /* Match the font size of the label to the desired size */
+  line-height: 1.25em; /* Ensures the label text is vertically centered with the checkbox */
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.ms-2 {
+  margin-left: 0.5rem; /* Adjusts the spacing between checkbox and label */
+}
+
+.mb-0 {
+  margin-bottom: 0; /* Removes bottom margin to keep label and checkbox aligned */
+}
+
+
+.form-group {
+  position: relative;
+  padding-bottom: 22px; /* Adjusted for space for validation messages */
+}
+
+.red-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: red;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.login-btn,
+.login-btn:focus {
+  color: #ffffff;
+  background: #2487ce;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  padding: 8px 30px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.btn-red {
+  color: #fff;
+  background-color: #ce4d24;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  padding: 8px 30px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.login-btn:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.form-group .red-text {
+  height: 1.2rem; /* Fixed height to maintain layout */
+}
+
+.inner-div {
+  background-color: #e9ecef;
+  padding: 7px;
+  padding-left: 50px;
+  border: 1px solid #cccccc;
+  font-size: 20px;
+  letter-spacing: 3px;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
+}
+
+.swal2-confirm {
+  color: #ffffff;
+  background: #2487ce;
+  font-size: 15px;
+  padding: 8px 20px;
+  margin: 0 0 0 10px;
+  border-radius: 15px;
+  transition: 0.3s;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
+.swal2-confirm:hover {
+  color: #ffffff;
+  background: #2487ce;
+  font-size: 15px;
+  padding: 8px 20px;
+  margin: 0 0 0 10px;
+  border-radius: 15px;
+  transition: 0.3s;
+  text-decoration: none;
+  outline: none;
+  border: none; /* Darker shade of red for border on hover */
+  opacity: 0.8;
+}

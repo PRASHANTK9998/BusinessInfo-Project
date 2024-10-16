@@ -1,0 +1,135 @@
+.footer {
+  background-color: color-mix(in srgb,#2487ce, transparent 96%);
+  border-top: 1px solid color-mix(in srgb,#2487ce, transparent 80%);
+  border-bottom: 1px solid color-mix(in srgb, #2487ce, transparent 80%);
+  color: #444444 ;
+  background-color: #ffffff;
+  font-size: 14px;
+  /* padding-bottom: 50px; */
+  position: relative;
+  overflow-x: hidden;
+}
+
+.footer .footer-top {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.footer .footer-about .logo {
+  line-height: 1;
+  margin-bottom: 25px;
+}
+
+.footer .footer-about .logo img {
+  max-height: 40px;
+  margin-right: 6px;
+}
+
+.footer .footer-about .logo span {
+  color: #124265;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: var(--heading-font);
+}
+
+.footer .footer-about p {
+  font-size: 20px;
+  font-family: var(--heading-font);
+}
+
+.footer .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid color-mix(in srgb,#2487ce, transparent 50%);
+  font-size: 20px;
+  color:#2487ce;
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.footer .social-links a:hover {
+  background-color:#2487ce;
+  color: #ffffff;
+  border-color:#2487ce;
+}
+
+.footer h4 {
+  font-size: 20px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer .footer-links {
+  margin-bottom: 30px;
+}
+
+.footer .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .footer-links ul i {
+  padding-right: 2px;
+  font-size: 16px;
+  line-height: 0;
+}
+
+.footer .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .footer-links ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .footer-links ul a:hover {
+  color: #2487ce;
+}
+
+.footer .footer-contact p {
+  margin-bottom: 5px;
+}
+
+.footer .copyright {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #2487ce;
+  color: #ffffff;
+}
+
+.footer .copyright p {
+  margin-bottom: 0;
+}
+
+.footer .credits {
+  margin-top: 4px;
+  font-size: 16px;
+}
+
+.footer .credits a {
+  color: color-mix(in srgb, #ffffff, transparent 30%);
+}
+
+.light-background {
+  background-color: #f6fafd;
+  --surface-color: #ffffff;
+}
+
+a{
+  text-decoration: none;
+}

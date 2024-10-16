@@ -1,0 +1,63 @@
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+              <aside id="sidebar" class="sidebar">
+                <ul class="sidebar-nav" id="sidebar-nav">
+                  <!-- <li class="nav-item">
+                    <a class="nav-link collapsed" routerLink="/admindashboard/dashboard" routerLinkActive="active">
+                      <i class="bi bi-grid"></i>
+                      <span>Dashboard</span>
+                    </a>
+                  </li> -->
+                  <li class="nav-item">
+                    <a class="nav-link collapsed" routerLink="/reports/lowprofilebusinesses" routerLinkActive="active">
+                      <i class="bi bi-person"></i>
+                      <span>Low profile Businesses</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link collapsed" routerLink="/reports/businessesbypercitypercategory">
+                      <i class="bi bi-ui-checks"></i>
+                      <span>Businesses By City and Category</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link collapsed" routerLink="/reports/allqueries">
+                      <i class="bi bi-calculator"></i>
+                      <span>Contacted List</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link collapsed" routerLink="/reports/paymenthistory">
+                      <i class="bi bi-file-text"></i>
+                      <span>Payment History</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link collapsed" routerLink="/reports/highlyrateddata">
+                      <i class="bi bi-trophy"></i>
+                      <span>Highly Rated Companies</span>
+                    </a>
+      
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link collapsed" routerLink="/reports/inactivatedbusinesses">
+                        <i class="bi bi-file-x"></i>
+                        <span>Recently Inactivated Companies</span>
+                      </a>
+                    </li>
+                </ul>
+            
+              </aside>
+            </div>
+            <div class="col-10">
+              <div class="container-fluid">
+                  <router-outlet></router-outlet>
+                </div>
+            </div>
+          </div>
+    </div>
+        
+        </body>

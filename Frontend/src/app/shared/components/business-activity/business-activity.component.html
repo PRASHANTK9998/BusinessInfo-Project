@@ -1,0 +1,111 @@
+<div class="container-fluid mt-3">
+    <div class="row align-items-center mb-2">
+      <!-- Search Box -->
+      <!-- <div class="col-3">
+          <div class="search-box">
+            <input type="text" class="form-control" placeholder="Search businesses by Name or Category" [(ngModel)]="searchTerm" (input)="searchByBusinessNameAndCategory()">
+          </div>
+        </div> -->
+  
+      <!-- Sorting Dropdown -->
+      <!-- <div class="col-3 ms-auto">
+          <div class="sort-dropdown">
+            <select class="form-select" (change)="onSortChange($event)">
+              <option value="" selected disabled>Sort by</option>
+              <option value="businessName">Business Name</option>
+              <option value="businessCategory">Category</option>
+              <option value="city">City</option>
+              <option value="state">State</option>
+            </select>
+          </div>
+        </div> -->
+    </div>
+  
+    <!-- Table -->
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="table-container table-responsive border mb-3">
+          <table class="table table-bordered table-striped">
+            <caption class="table-caption">
+              New Businesses
+            </caption>
+            <thead>
+              <tr>
+                <th>Business Name</th>
+                <th>Category</th>
+                <th>Email</th>
+                <th>GST No</th>
+                <th>Mobile Number</th>
+                <th>City</th>
+                <th>Status</th>
+                <th>Profile Score</th>
+                <th>Rejected Message</th>
+                <!-- <th>Status</th> -->
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let business of paginatedItems">
+                <td>{{ business.businessName }}</td>
+                <td>{{ business.businessCategoryName }}</td>
+                <td>{{ business.email }}</td>
+                <td>{{ business.gstNo }}</td>
+                <td>{{ business.mobileNumber }}</td>
+                <td>{{ business.addressDTO.city}}</td>
+                <td>{{ business.businessStatus }}</td>
+                <td>{{ business.profileScore }}% Completed</td>
+                <td><input [disabled]="!business.isEditing" [(ngModel)] = "business.message"></td>
+                
+                <!-- <td>
+                  <select
+                    [disabled]="!business.isEditing"
+                    [(ngModel)]="business.businessStatus"
+                  >
+                    <option
+                      *ngFor="let status of businessStatuses"
+                      [value]="status"
+                    >
+                      {{ status }}
+                    </option>
+                  </select>
+                </td> -->
+                <td>
+                  <div class="btn-group" role="group">
+                    <span class="icon-view" (click)="viewUserData(business.email)">
+                        <i class="bi bi-eye"  data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="view business to verify details"></i>
+                      </span>
+                    <span  class="icon-edit" (click)="updateNewApplicationStatus(business)">
+                        <i class="bi bi-check-circle"  data-bs-toggle="tooltip" 
+                        data-bs-placement="top" 
+                        title="Approve Business"></i>
+                      </span>
+                    <span class="icon-delete" (click)="toggleEdit(business)" data-bs-toggle="tooltip" 
+                    data-bs-placement="top" 
+                    title="Reject Business">
+                      <i
+                        *ngIf="business.isEditing; else editIcon"
+                        class="bi bi-save"  
+                      ></i>
+                      <ng-template #editIcon>
+                        <i class="bi bi-x-circle"></i>
+                      </ng-template>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <app-pagination 
+        [totalItems]="filteredbusinessData.length" 
+        [itemsPerPage]="itemsPerPage" 
+        [currentPage]="currentPage" 
+        (pageChanged)="onPageChange($event)">
+    </app-pagination>
+  

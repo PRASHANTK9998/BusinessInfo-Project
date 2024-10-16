@@ -1,0 +1,205 @@
+<div class="container-fluid mt-3">
+  <div class="row align-items-center mb-2">
+    <div class="col-4">
+      <div class="search-box">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search by Business Name, Category or City"
+          [(ngModel)]="searchTerm"
+          (input)="searchByBusinessNameAndCategory()"
+        />
+      </div>
+    </div>
+
+    <div class="col-3 ms-auto">
+      <div class="sort-dropdown">
+        <select class="form-select" (change)="onSortChange($event)">
+          <option value="" selected disabled>Sort by</option>
+          <option value="businessName">Business Name</option>
+          <option value="businessCategoryName">Category</option>
+        </select>
+        <!-- <ng-select class="sort-class" [placeholder]="'Sort by'" [(ngModel)]="selectedSort" (change)="onSortChange()" [clearable]="false">
+            <ng-option class="options" *ngFor="let sort of sorts" [value]="sort.value">{{sort.sortBy}}</ng-option>
+          </ng-select> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="table-container table-responsive border mb-3">
+        <table class="table table-bordered table-striped">
+          <caption class="table-caption">
+            List of Businesses
+          </caption>
+          <thead>
+            <tr>
+              <th>Business Name</th>
+              <th>Category</th>
+              <th *ngIf="role == 'Admin'">GSTIN Number</th>
+              <th>Email Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Zip</th>
+              <!-- <th>Website</th> -->
+              @if(commonService.isAuthenticated() && role == 'Admin'){
+              <th>Profile Score</th>
+              <th>Status</th>
+              <th>Views</th>
+              <th>Rating</th>
+              }
+              <th>Actions</th>
+              @if(commonService.isAuthenticated() && role == 'Admin'){
+              <th>Apply Filter</th>
+              } @if(role === "BusinessAdmin"){
+              <th>SponserShip</th>
+              }
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of paginatedItems">
+              <td>{{ data.businessName }}</td>
+              <td>{{ data.businessCategoryName }}</td>
+              <td *ngIf="role == 'Admin'">{{ data.gstNo }}</td>
+              <td>{{ data.email }}</td>
+              <td>{{ data.addressDTO.city }}</td>
+              <td>{{ data.addressDTO.state }}</td>
+              <td>{{ data.addressDTO.zipCode }}</td>
+              <!-- <td>
+                <a [href]="formatUrl(data.website)" target="_blank">
+                  {{ data.website }}
+                </a>
+              </td> -->
+              @if(commonService.isAuthenticated() && role == 'Admin'){
+              <td>{{ data.profileScore }} % Completed</td>
+              <td>
+                {{ convertNumberToApplicationStatus(data.businessStatus) }}
+              </td>
+              <td>{{ data.views }}</td>
+              <td>{{calculateAverageOftheRating(data.reviews)}}
+                <div class="rating-container">
+                  <div class="stars">
+                    <ng-container *ngFor="let star of fullStars">
+                      <i class="bi bi-star-fill filled"></i>
+                    </ng-container>
+                    <ng-container *ngIf="hasHalfStar">
+                      <i class="bi bi-star-half filled"></i>
+                    </ng-container>
+                    <ng-container *ngFor="let star of emptyStars">
+                      <i class="bi bi-star blank"></i>
+                    </ng-container>
+                  </div>
+                </div>
+              </td>
+              }
+              <td>
+                <div class="btn-group" role="group">
+                  @if( role === "Admin" || data.email ===loggedEmail){
+                  <span
+                    class="icon-edit"
+                    (click)="editBusinessDetails(data.email)"
+                  >
+                    <i
+                      class="bi bi-pencil"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Edit Business"
+                    ></i>
+                  </span>
+                  <span class="icon-delete" (click)="deleteUser(data.email)">
+                    <i
+                      class="bi bi-trash"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Delete Business"
+                    ></i>
+                  </span>
+
+                  } @if( role === "Admin"){
+                  <span
+                    class="icon-inactive"
+                    (click)="updateStatus(data, 'Inactive')"
+                  >
+                    <i
+                      class="bi bi-slash-circle"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Inactive Business"
+                    ></i>
+                  </span>
+                  }
+                  <span class="icon-view" (click)="viewUserData(data.email)">
+                    <i
+                      class="bi bi-eye"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="View Business"
+                    ></i>
+                  </span>
+                </div>
+              </td>
+              @if(commonService.isAuthenticated() && role == 'Admin'){
+              <td>
+                <div class="dropdown">
+                  <button
+                    class="btn-getstarted dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Mark As
+                  </button>
+                  <ul
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                  >
+                    <li>
+                      <button
+                        class="dropdown-item"
+                        (click)="markAsMostVisited(data.email)"
+                      >
+                        {{
+                          data.isMostVisited
+                            ? "Unmark MostVisited"
+                            : "Most Visited"
+                        }}
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        class="dropdown-item"
+                        (click)="markAsMostRated(data.email)"
+                      >
+                        {{
+                          data.isMostRated ? "Unmark MostRated" : "Most Rated"
+                        }}
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+              } @if(data.email === loggedEmail && role === "BusinessAdmin"){
+              <td><a routerLink="/payment">Make Payment</a></td>
+              }
+            </tr>
+            <tr *ngIf="paginatedItems.length === 0">
+              <td colspan="9" class="text-center">
+                <h2 class="no-data-found">No data Found</h2>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-pagination
+  [totalItems]="filteredbusinessData.length"
+  [itemsPerPage]="itemsPerPage"
+  [currentPage]="currentPage"
+  (pageChanged)="onPageChange($event)"
+>
+</app-pagination>

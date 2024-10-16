@@ -1,0 +1,107 @@
+<div [hidden]="configProperties.isHidden">
+  <!-- Label for fields -->
+  <label
+    class="col-auto component-label"
+    *ngIf="configProperties.showLabel"
+    [for]="configProperties.formControlName"
+    [style.color]="
+      form.controls[configProperties.formControlName].invalid &&
+      form.controls[configProperties.formControlName].touched
+        ? '#DA2D20 !important'
+        : ''
+    "
+    [ngClass]="[
+      configProperties.styles.labelStylesClassName
+        ? configProperties.styles.labelStylesClassName
+        : '',
+    ]"
+  >
+    {{ configProperties.displayName || 'Label' }}
+    <span class="ml-1 text-danger" *ngIf="isMandatory()">*</span>
+  </label>
+  <div *ngIf="form !== undefined" [formGroup]="form">
+    <ng-select
+      [placeholder]="'Select an Option' "
+      [fixedPlaceholder]="false"
+      [readonly]="isReadOnly()"
+      class="form-group px-2"
+      [clearable]="false"
+      [formControlName]="configProperties.formControlName"
+      (click)="onDropdownChanged()"
+      (change)="onDropdownChanged()"
+      [ngClass]="[
+        configProperties.styles.stylesClassName
+          ? configProperties.styles.stylesClassName
+          : '',
+        form.controls[configProperties.formControlName].invalid &&
+        form.controls[configProperties.formControlName].touched
+          ? 'validation-error-wrapper'
+          : '',
+        isReadOnly() ? 'disabled-dropdown' : '',
+        getCustomCssClasses(),
+      ]"
+      [(ngModel)]="defaultDropDownValue"
+      [items]="configProperties.listOfOptions"
+      bindLabel="{{ configProperties.dropDisplayName || 'displayName' }}"
+      bindValue="{{ configProperties.dropValue || 'value' }}"
+      [searchable]="false"
+      
+    >
+    </ng-select>
+    <div *ngIf="configProperties.helpText" class="help-text">
+      <small [class]="'text-muted '">
+        {{ configProperties.helpText }}
+      </small>
+    </div>
+    <!-- Validation error texts -->
+    <div
+      *ngIf="
+        form.controls[configProperties.formControlName]?.invalid &&
+        form.controls[configProperties.formControlName]?.touched
+      "
+      [style]="
+        'height: fit-content !important; width: ' +
+        configProperties.styles.width +
+        ';'
+      "
+    >
+      <ng-container
+        *ngIf="
+          form.controls[configProperties.formControlName].errors?.['required']
+        "
+      >
+        <p class="invalid-input-text">Please enter value</p>
+      </ng-container>
+      <ng-container
+        *ngIf="
+          form.controls[configProperties.formControlName].errors?.['minlength']
+        "
+      >
+        <p class="invalid-input-text">
+          Value must be at least
+          {{
+            form.controls[configProperties.formControlName].errors?.[
+              'minlength'
+            ].requiredLength
+          }}
+          characters long
+        </p>
+      </ng-container>
+      <ng-container
+        *ngIf="
+          form.controls[configProperties.formControlName].errors?.['maxlength']
+        "
+      >
+        <p class="invalid-input-text">
+          Value must be maximum
+          {{
+            form.controls[configProperties.formControlName].errors?.[
+              'maxlength'
+            ].requiredLength
+          }}
+          characters long
+        </p>
+      </ng-container>
+    </div>
+  </div>
+</div>

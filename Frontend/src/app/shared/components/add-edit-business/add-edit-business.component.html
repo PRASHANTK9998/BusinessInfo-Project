@@ -1,0 +1,364 @@
+<div class="container mt-1 mb-2">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header text-center">
+          <h4>Add New Business Data</h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="addDataForm">
+            <div class="form-group">
+              <label for="businessName"
+                >Business Name<span class="required-asterisk">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="businessName"
+                placeholder="Enter Business Name"
+                formControlName="businessName"
+              
+              />
+              <h5
+                class="red-text"
+                [hidden]="
+                  addDataForm.get('businessName')?.valid ||
+                  addDataForm.get('businessName')?.untouched
+                "
+              >
+                Business Name is required
+              </h5>
+            </div>
+            <div class="row">
+              <div class="form-group col-6">
+                <label for="businessCategory"
+                  >Business Category<span class="required-asterisk"
+                    >*</span
+                  ></label
+                >
+                <!-- <select
+                    class="form-control"
+                    id="businessCategory"
+                    formControlName="businessCategory"
+                  >
+                    <option value="" disabled selected>
+                      Select One...
+                    </option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Grocery">Grocery</option>
+                    <option value="Retail">Retail</option>
+                    <option value="Pharma">Pharma</option>
+                    <option value="">Other</option>
+                  </select> -->
+
+                <select
+                  class="form-control"
+                  id="businessCategory"
+                  formControlName="businessCategory"
+                  (change)="onCategoryChange($event)"
+                >
+                <option [ngValue]="null" disabled>Select a category</option> 
+                  <option
+                    *ngFor="let category of categories"
+                    [ngValue]="category.categoryId"
+                   
+                  >
+                    {{ category.categoryName }}
+                  </option>
+                </select>
+                <h5
+                  class="red-text"
+                  [hidden]="
+                    addDataForm.get('businessCategory')?.valid ||
+                    addDataForm.get('businessCategory')?.untouched
+                  "
+                >
+                  Select business category
+                </h5>
+              </div>
+              <div class="form-group col-6">
+                <label for="GSTIN"
+                  >GSTIN Number<span class="required-asterisk">*</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="GSTIN"
+                  placeholder="Enter registered GSTIN Number *"
+                  formControlName="GSTIN"
+                 
+                />
+                <h5
+                  class="red-text"
+                  [hidden]="
+                    addDataForm.get('GSTIN')?.valid ||
+                    addDataForm.get('GSTIN')?.untouched
+                  "
+                >
+                  GST Number is required
+                </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-6">
+                <label for="email"
+                  >Email Address<span class="required-asterisk">*</span></label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter your Email Address"
+                  formControlName="email"
+                />
+                <h5
+                  class="red-text"
+                  [hidden]="
+                    addDataForm.get('email')?.valid ||
+                    addDataForm.get('email')?.untouched
+                  "
+                >
+                  Email is required and it should be correct
+                </h5>
+              </div>
+              <div class="form-group col-6">
+                <label for="mobileNumber"
+                  >Mobile Number<span class="required-asterisk">*</span></label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="mobileNumber"
+                  placeholder="Enter 10 Digit Mobile Number"
+                  formControlName="mobileNumber"
+                />
+                <h5
+                  class="red-text"
+                  [hidden]="
+                    addDataForm.get('mobileNumber')?.valid ||
+                    addDataForm.get('mobileNumber')?.untouched
+                  "
+                >
+                  10 digit mobile number is required
+                </h5>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="businessWebsite">Business website<span class="required-asterisk">*</span></label>
+              <input
+                type="text"
+                class="form-control"
+                id="businessName"
+                placeholder="Enter Business Website"
+                formControlName="businessWebsite"
+              />
+              <h5
+                  class="red-text"
+                  [hidden]="
+                    addDataForm.get('businessWebsite')?.valid ||
+                    addDataForm.get('businessWebsite')?.untouched
+                  "
+                >
+                  Select business category
+                </h5>
+            </div>
+            <div class="form-group">
+              <label for="addressline1"
+                >Business Address<span class="required-asterisk">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="addressline1"
+                placeholder="Enter street address line 1 *"
+                formControlName="addressline1"
+              />
+              <h5
+                class="red-text"
+                [hidden]="
+                  addDataForm.get('addressline1')?.valid ||
+                  addDataForm.get('addressline1')?.untouched
+                "
+              >
+                Street line 1 is required
+              </h5>
+              <input
+                type="text"
+                class="form-control"
+                id="addressline2"
+                placeholder="Enter street address line 2 (Optional)"
+                formControlName="addressline2"
+              />
+            </div>
+            <div class="row">
+              <div class="form-group col-6">
+                <label for="state"
+                  >State<span class="required-asterisk">*</span></label
+                >
+                <select class="form-control" id="state" formControlName="state">
+                  <option value="" disabled selected>Select State</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                  <option value="MadhyaPradesh">Madhya Pradesh</option>
+                  <option value="UttarPradesh">Uttar Pradesh</option>
+                  <option value="Chattisgarh">Chattisgarh</option>
+                  <option value="Tamilnadu">Tamilnadu</option>
+                </select>
+                <h5
+                  class="red-text"
+                  [hidden]="
+                    addDataForm.get('state')?.valid ||
+                    addDataForm.get('state')?.untouched
+                  "
+                >
+                  State must be selected
+                </h5>
+              </div>
+              <div class="form-group col-6">
+                <label for="city"
+                  >City<span class="required-asterisk">*</span></label
+                >
+                <select class="form-control" id="city" formControlName="city">
+                  <option value="" disabled selected>Select City</option>
+                  <option *ngFor="let city of cities" [value]="city">
+                    {{ city }}
+                  </option>
+                </select>
+                <h5
+                  class="red-text"
+                  [hidden]="
+                    addDataForm.get('city')?.valid ||
+                    addDataForm.get('city')?.untouched
+                  "
+                >
+                  City must be selected
+                </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-6">
+                <label for="zip"
+                  >Zip Code<span class="required-asterisk">*</span></label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="zip"
+                  placeholder="Enter Zipcode/Pincode"
+                  formControlName="zip"
+                />
+                <h5
+                  class="red-text"
+                  [hidden]="
+                    addDataForm.get('zip')?.valid ||
+                    addDataForm.get('zip')?.untouched
+                  "
+                >
+                  6 digit Zip or Pincode is required
+                </h5>
+              </div>
+              <div class="form-group col-6">
+                <label for="country">Country<span class="required-asterisk">*</span></label>
+                <select
+                  class="form-control"
+                  id="city"
+                  formControlName="country"
+                >
+                  <option value="" disabled selected>Country</option>
+                  <option value="India">India</option>
+                  <option value="USA">USA</option>
+                  <option value="US">US</option>
+                  <option value="South Africa">South Africa</option>
+                  <option value="Norway">Norway</option>
+                </select>
+                <h5
+                  class="red-text"
+                  [hidden]="
+                    addDataForm.get('country')?.valid ||
+                    addDataForm.get('country')?.untouched
+                  "
+                >
+                  Country must be selected
+                </h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-6">
+                <label for="contactPerson"
+                  >Contact Person Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contactPerson"
+                  placeholder="Enter Contact Person Name"
+                  formControlName="contactPerson"
+                />
+                <!-- <h5
+                  class="red-text"
+                  [hidden]="
+                    addDataForm.get('contactPerson')?.valid ||
+                    addDataForm.get('contactPerson')?.untouched
+                  "
+                >
+                  Contact person name is required
+                </h5> -->
+              </div>
+              <div class="form-group col-6">
+                <label for="position"
+                  >Position/title</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="position"
+                  placeholder="Enter position/title of contact person"
+                  formControlName="position"
+                />
+                <!-- <h5
+                  class="red-text"
+                  [hidden]="
+                    addDataForm.get('position')?.valid ||
+                    addDataForm.get('position')?.untouched
+                  "
+                >
+                  Position of contact person is required
+                </h5> -->
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="businessDetails"
+                >More Details About Business</label
+              >
+              <textarea
+                class="form-control"
+                id="businessDetails"
+                rows="5"
+                placeholder="Describe your business in few words"
+                formControlName="businessDetails"
+              ></textarea>
+              <!-- <h5
+                class="red-text"
+                [hidden]="
+                  addDataForm.get('businessDetails')?.valid ||
+                  addDataForm.get('businessDetails')?.untouched
+                "
+              >
+                Business details is required
+              </h5> -->
+            </div>
+
+            <div class="d-flex justify-content-center">
+              <button class="login-btn" [disabled]="addDataForm.invalid" (click)="saveDetails()">
+                Save and Close
+              </button>
+              <button class="btn-getstarted" (click)="clearForm()">
+                Clear
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

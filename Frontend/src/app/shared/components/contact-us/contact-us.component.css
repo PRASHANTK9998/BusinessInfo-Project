@@ -1,0 +1,39 @@
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+textarea{
+    resize: none;
+  }
+
+.card-title{
+    color: #2487ce ;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+  .login-btn,
+.login-btn:focus {
+  color: #ffffff;
+  background: #2487ce;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  padding: 8px 30px;
+  margin: 0 0 0 0px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.login-btn:disabled,
+.btn-red:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+

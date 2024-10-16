@@ -1,0 +1,16 @@
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center mt-4">
+    <!-- Previous Button -->
+    <li class="page-item me-2" [class.disabled]="currentPage === 1">
+      <button class="btn-getstarted" (click)="previousPage()">Previous</button>
+    </li>
+    <!-- Page Information -->
+    <li class="page-item disabled mt-1">
+      <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
+    </li>
+    <!-- Next Button -->
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <button class="btn-getstarted" (click)="nextPage()">Next</button>
+    </li>
+  </ul>
+</nav>

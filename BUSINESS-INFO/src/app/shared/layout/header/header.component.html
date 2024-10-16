@@ -1,0 +1,70 @@
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative me-5">
+    <a routerLink="/" class="logo d-flex align-items-center ms-auto me-auto">
+      <img src="assets/logo.webp" alt="logo">
+      <h1 class="sitename">BusinessInfo</h1>
+    </a>
+  </div>
+  <div
+    class="container-fluid container-xl position-relative d-flex align-items-center"
+  >
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li *ngIf="commonService.isAuthenticated() === false">
+          <a routerLink="/" routerLinkActive="active">Home<br /></a>
+        </li>
+        
+        <li><a routerLink="/about" routerLinkActive="active">About Us</a></li>
+        @if(commonService.isAuthenticated()){
+        <li>
+          <a routerLink="/addeditbusinessdata" routerLinkActive="active"
+            >Add Business</a
+          >
+        </li>
+        }
+        @if(commonService.isAuthenticated() && commonService.getloggedInUserData().Role === "Admin"){
+          <li>
+            <a routerLink="/sponsersdata" routerLinkActive="active"
+              >Sponsers Data</a
+            >
+          </li>
+          }
+        <li><a routerLink="/listalldata">Businesses</a></li>
+        @if(commonService.isAuthenticated() && commonService.getloggedInUserData().Role === "Admin"){
+        <li><a routerLink="/lowprofilebusinesses">Low Profile</a></li>
+        }
+        @if(commonService.isAuthenticated() && commonService.getloggedInUserData().Role === "Admin"){
+        <li><a routerLink="/businessesbypercitypercategory">By City & Category</a></li>
+        }
+        @if(commonService.isAuthenticated() && commonService.getloggedInUserData().Role === "Admin"){
+          <li><a routerLink="/allqueries">Contacted List</a></li>
+          }
+          @else {
+        <li><a routerLink="/contactus">Contact us</a></li>
+      }
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+    </nav>
+  </div>
+  <div
+    class="container-fluid container-xl position-relative d-flex justify-content-end me-5"
+  >
+    @if(commonService.isAuthenticated()){
+    <a class="btn-getstarted" (click)="commonService.logOut()"
+      >Logout</a>
+    }@else{
+    <a
+      class="btn-getstarted"
+      [hidden]="router.url === '/login'"
+      routerLink="/login"
+      >Login</a
+    >
+    <a
+      class="btn-getstarted"
+      [hidden]="router.url === '/signup'"
+      routerLink="/signup"
+      >Sign Up</a
+    >
+    }
+  </div>
+</header>

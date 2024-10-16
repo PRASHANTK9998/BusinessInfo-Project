@@ -1,0 +1,109 @@
+<!-- <div class="container-fluid mt-4">
+    <div class="card profile-card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="profile-photo">
+            <img src="assets/profilePhoto.jpg" alt="Profile Photo" class="profile-photo-img" />
+          </div>
+          <button type="button" class="btn-getstarted" (click)="toggleEdit()">
+            {{ isEditMode ? 'Cancel' : 'Edit' }}
+          </button>
+        </div>
+        <h2 class="card-title">User Profile</h2>
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+         
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group mb-3">
+                <label for="firstName">First Name</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  class="form-control"
+                  formControlName="firstName"
+                  [readonly]="!isEditMode"
+                  [class.editable]="isEditMode"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group mb-3">
+                <label for="lastName">Last Name</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  class="form-control"
+                  formControlName="lastName"
+                  [readonly]="!isEditMode"
+                  [class.editable]="isEditMode"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group mb-3">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  formControlName="email"
+                  [readonly]="!isEditMode"
+                  [class.editable]="isEditMode"
+                />
+              </div>
+            </div>
+          </div>
+  
+
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group mb-3">
+                <label for="phoneNumber">Phone Number</label>
+                <input
+                  type="text"
+                  id="phoneNumber"
+                  class="form-control"
+                  formControlName="phoneNumber"
+                  [readonly]="!isEditMode"
+                  [class.editable]="isEditMode"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group mb-3">
+                <label for="applicationNumber">Application Number</label>
+                <input
+                  type="text"
+                  id="applicationNumber"
+                  class="form-control"
+                  formControlName="applicationNumber"
+                  [readonly]="!isEditMode"
+                  [class.editable]="isEditMode"
+                />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group mb-3">
+                <label for="passportNumber">Passport Number</label>
+                <input
+                  type="text"
+                  id="passportNumber"
+                  class="form-control"
+                  formControlName="passportNumber"
+                  [readonly]="!isEditMode"
+                  [class.editable]="isEditMode"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <div class="mt-4 text-end">
+            <button type="submit" class="btn btn-success" *ngIf="isEditMode">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+   -->

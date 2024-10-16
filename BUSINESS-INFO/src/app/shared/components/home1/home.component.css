@@ -1,0 +1,28 @@
+.container-fluid {
+  padding: 50px 20px;
+  margin-top: 80px;
+
+}
+
+.card {
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+p{
+  color: black;
+  font-weight:normal;
+}
+
+.card-header {
+  background-color: #2487ce;
+  color: #ffffff;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  padding: 20px;
+}
+
+.card-body {
+  padding: 30px;
+}
+

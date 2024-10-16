@@ -1,0 +1,113 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* @import '~@ng-select/ng-select/themes/default.theme.css'; */
+
+@import 'ag-grid-community/styles//ag-grid.css';
+
+@import 'ag-grid-community/styles//ag-theme-alpine.css';
+
+@import 'ag-grid-community/styles//ag-theme-balham.css';
+
+@import 'ag-grid-community/styles//ag-theme-material.css';
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .options {
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .btn-getstarted,
+  .btn-getstarted:focus {
+    color: #ffffff;
+    background: #2487ce;
+    font-size: 15px;
+    padding: 8px 30px;
+    margin: 0 0 0 10px;
+    border-radius: 15px;
+    transition: 0.3s;
+    text-decoration: none;
+    outline: none;
+    border: none; 
+  }
+  btn-getstarted:disabled{
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+
+  
+  .btn-reject,
+  .btn-reject:focus {
+    color: #ffffff;
+    background: #ce4d24;
+    font-size: 15px;
+    padding: 8px 30px;
+    margin: 0 0 0 10px;
+    border-radius: 15px;
+    transition: 0.3s;
+    text-decoration: none;
+    outline: none;
+    border: none; 
+  }
+
+  .swal2-confirm {
+    color: #ffffff;
+    background: #ce4d24;
+    font-size: 15px;
+    padding: 8px 20px;
+    margin: 0 0 0 10px;
+    border-radius: 15px;
+    transition: 0.3s;
+    text-decoration: none;
+    outline: none;
+    border: none;
+  }
+  
+  .swal2-confirm:hover {
+    color: #ffffff;
+    background: #ce4d24;;
+    font-size: 15px;
+    padding: 8px 20px;
+    margin: 0 0 0 10px;
+    border-radius: 15px;
+    transition: 0.3s;
+    text-decoration: none;
+    outline: none;
+    border: none;/* Darker shade of red for border on hover */
+  }
+  
+  a{
+    text-decoration: none;
+  }
+
+  .swal2-cancel {
+    color: #ffffff;
+    background: grey;;
+    font-size: 15px;
+    padding: 8px 20px;
+    margin: 0 0 0 10px;
+    border-radius: 15px;
+    transition: 0.3s;
+    text-decoration: none;
+    outline: none;
+    border: none;
+  }
+  
+  .swal2-confirm:hover {
+    color: #ffffff;
+    background: #d14419;
+    font-size: 15px;
+    padding: 8px 20px;
+    margin: 0 0 0 10px;
+    border-radius: 15px;
+    transition: 0.3s;
+    text-decoration: none;
+    outline: none;
+    border: none;/* Darker shade of red for border on hover */
+  }
+  
